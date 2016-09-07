@@ -11,28 +11,108 @@ class App extends Component {
     super(props, context);
 
     this.state = {
-      stack: ''
+      stack: [],
+      display: '0',
+      result: false,
+      decimal: false
     }
   };
 
+  componentDidMount() {
+    math.config({
+      number: 'BigNumber',
+      precision: 64
+    });
+  }
+
   handleClick(key) {
     switch (key) {
-      case '=':
+      case 'AC':
         this.setState({
-          stack: math.eval(this.state.stack)
-        });
+          stack: [],
+          display: '',
+          result: false,
+          decimal: false
+        })
+        break;
+      case 'CE':
+        if (this.state.display !== '') {
+          this.setState({
+            display: ''
+          })
+        } else {
+          let newstack = this.state.stack;
+          newstack.pop();
+          this.setState({
+            stack: newstack
+          });
+        }
+        break;
+      case '=':
+        if (!/[+\-*/]/.test(this.state.display) && this.state.display !== '') {
+          this.setState({
+            display: String(math.eval(this.state.stack.join('') + this.state.display)),
+            stack: [],
+            result: true,
+            decimal: false
+          });
+        }
+        break;
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        if (/[+\-*/]/.test(this.state.stack[this.state.stack.length-1]) &&
+            /[+\-*/]/.test(this.state.display)) {
+          let newstack = this.state.stack;
+          newstack[newstack.length-1] = key;
+          this.setState({
+            stack: newstack,
+            display: String(key),
+            result: false
+          });
+        } else {
+          this.setState({
+            stack: this.state.stack.concat([this.state.display, key]),
+            display: String(key),
+            decimal: false,
+            result: false
+          });
+        }
         break;
       default:
-        this.setState({
-          stack: this.state.stack + key
-        });
+        if (key === '.' && this.state.decimal) {
+          break;
+        } else if (key === '.' && !this.state.decimal) {
+          this.setState({
+            decimal:true
+          })
+        }
+        if (/[+\-*/]/.test(this.state.display)) {
+          this.setState({
+            display: String(key)
+          })
+        } else if (this.state.result) {
+          this.setState({
+            display: String(key),
+            result: false
+          });
+        } else {
+          if (String(this.state.display).match(/([0-9])/g).length <= 8) {
+            this.setState({
+              display: this.state.display.concat(key)
+            });
+          }
+        }
+        break;
     }
   }
 
   render() {
     return (
       <div>
-        <div>{this.state.stack}</div>
+        <h1>{/[+\-*/]/.test(this.state.display) ? this.state.display : math.format(math.eval(this.state.display), {notation: 'auto', exponential: {lower:1e-8, upper:1e8}, precision: 8 })}</h1>
+        <div>{this.state.stack.join('')}</div>
         <ButtonToolbar>
           <Button bsStyle="danger" onClick={this.handleClick.bind(this, 'AC')}>
             AC
@@ -93,7 +173,7 @@ class App extends Component {
           <Button bsStyle="default" onClick={this.handleClick.bind(this, 0)}>
             0
           </Button>
-          <Button bsStyle="default" onClick={this.handleClick.bind(this, ',')}>
+          <Button bsStyle="default" onClick={this.handleClick.bind(this, '.')}>
             .
           </Button>
         </ButtonToolbar>
