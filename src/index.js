@@ -90,17 +90,17 @@ class App extends Component {
         }
         if (/[+\-*/]/.test(this.state.display)) {
           this.setState({
-            display: String(key)
+            display: '0' + String(key)
           })
         } else if (this.state.result) {
           this.setState({
-            display: String(key),
+            display: '0' + String(key),
             result: false
           });
         } else {
           if (String(this.state.display).match(/([0-9])/g).length <= 8) {
             this.setState({
-              display: this.state.display.concat(key)
+              display: String(this.state.display.concat(key))
             });
           }
         }
@@ -111,8 +111,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>{/[+\-*/]/.test(this.state.display) ? this.state.display : math.format(math.eval(this.state.display), {notation: 'auto', exponential: {lower:1e-8, upper:1e8}, precision: 8 })}</h1>
-        <div>{this.state.stack.join('')}</div>
+        <h1>{
+          /^[\.+\-*/]$/.test(this.state.display)
+            ? this.state.display
+            : math.format(math.eval(this.state.display), {
+              notation: 'auto',
+              exponential: {
+                lower:1e-9,
+                upper:1e9
+              },
+              precision: 8
+            })
+        }</h1>
         <ButtonToolbar>
           <Button bsStyle="danger" onClick={this.handleClick.bind(this, 'AC')}>
             AC
