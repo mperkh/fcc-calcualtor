@@ -123,6 +123,49 @@ class App extends Component {
               precision: 8
             })
         }</h1>
+        <div id="braun">
+          <img alt="BRAUN" id="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/16/Braun_Logo.svg" />
+          <div id="window">
+            <div id="digits">{
+              /^[\.+\-*/]$/.test(this.state.display)
+                ? this.state.display
+                : math.format(math.eval(this.state.display), {
+                  notation: 'auto',
+                  exponential: {
+                    lower:1e-9,
+                    upper:1e9
+                  },
+                  precision: 8
+                })
+            }</div>
+          </div>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'M+')}>M+</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'M-')}>M-</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'MR')}>MR</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'MC')}>MC</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'negate')}>+/-</button><br/>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'sqrt')}>√</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 7)}>7</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 8)}>8</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 9)}>9</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, '/')}>÷</button><br/>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'percent')}>%</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 4)}>4</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 5)}>5</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 6)}>6</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, '*')}>x</button><br/>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'inv')}>1/x</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 1)}>1</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 2)}>2</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 3)}>3</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, '-')}>-</button><br/>
+          <button className="darkGray" onClick={this.handleClick.bind(this, 'CE')}>CE</button>
+          <button className="lightGray" onClick={this.handleClick.bind(this, 0)}>0</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, '.')}>&bull;</button>
+          <button className="yellow" onClick={this.handleClick.bind(this, '=')}>=</button>
+          <button className="darkGray" onClick={this.handleClick.bind(this, '+')}>+</button><br/>
+        </div>
+
         <ButtonToolbar>
           <Button bsStyle="danger" onClick={this.handleClick.bind(this, 'AC')}>
             AC

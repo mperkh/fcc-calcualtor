@@ -1,5 +1,153 @@
+@font-face
+{
+  font-family: digital;
+  src: url(http://fontsforweb.com/public/fonts/1091/DSDIGI.ttf);
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+
+}
+
+button:focus {outline:0;}
+
+#logo {
+  width: 39px;
+  height: 17px;
+  opacity: 0.4;
+  margin: 15px;
+}
+
+#braun {
+    margin: 50px;
+    background-color: #e2e4d9;
+    display: inline-block;
+    padding: 17px 30px 30px 30px;
+    border-top-left-radius: 4%;
+    border-top-right-radius: 4%;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    box-shadow: -1px 8px 16px -1px rgba(0, 0, 0, 0.66), inset 0px -5px 8px 0px rgba(0, 0, 0, 0.66), inset 0px 4px 3px 2px white;
+}
+
+#window {
+background-color: #c4c8c7;
+    display: block;
+    box-shadow: inset 0px 2px 0px 1px rgba(0, 0, 0, 0.31), inset 0px -1px 0px 0px white;
+    width: 199px;
+    height: 50px;
+    border-radius: 9px;
+    left: 19px;
+    top: 17px;
+    position: relative;
+    margin-bottom: 130px;
+}
+
+#window::before {
+    content: '';
+    box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.31), inset 0px -1px 2px 0px white;
+    width: 223px;
+    height: 82px;
+    border-radius: 9px;
+    display: block;
+    position: absolute;
+    top: -12px;
+    left: -11px;
+}
+
+#digits {
+    font-family: digital;
+    font-size: 25px;
+    color: #6f7b77;
+    background-color: #c7ccc6;
+    text-align: right;
+    content: '';
+    box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.31), inset 0px -1px 0px 0px white;
+    width: 156px;
+    height: 33px;
+    border-radius: 9px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 22px;
+    padding-right: 4px;
+}
+
+.lightGray {
+  font-weight: 900;
+  color: #4a4f49;
+  margin: 6px;
+  background: radial-gradient(circle farthest-side at 17px 7px, #c7c4bb 0%,#c7c4bb 50%, #999a94 100%);
+  box-shadow: inset -2px 12px 0px -8px white, 0px 2px 2px 0px rgba(0, 0, 0, 0.66);
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 76%;
+  border-top-color: #b3b3b1;
+  border-bottom-color: #84847f;
+  border-left-color: #9c9c98;
+  border-right-color: #9c9c98;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
+.lightGray:active {
+  background: radial-gradient(circle farthest-side at 17px 15px, #b1b3aa 0%,#b6b7ae 50%, #95968d 100%);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.66);
+  border-top-color: #6f6f6d;
+  border-bottom-color: #6f6f6d;
+  border-left-color: #6f6f6d;
+  border-right-color: #6f6f6d;
+}
+
+.darkGray {
+  color: #f9f0e9;
+  margin: 6px;
+  background: radial-gradient(circle farthest-side at 41px -5px, #fdfdfd 0%,#84807a 50%, #564e43 100%);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.66);
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 76%;
+  border-top-color: #736e67;
+  border-bottom-color: #564e43;
+  border-left-color: #5a5348;
+  border-right-color: #756f65;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
+.darkGray:active {
+  background: radial-gradient(circle farthest-side at 41px -5px, #cecdcb 0%,#5f5850 50%, #38322b 100%);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.66);
+  border-top-color: #736e67;
+  border-bottom-color: #564e43;
+  border-left-color: #5a5348;
+  border-right-color: #756f65;
+}
+
+.yellow {
+  font-weight: 900;
+  color: #4a4f49;
+  margin: 6px;
+  background: radial-gradient(circle farthest-side at 41px -5px, #c79d11 0%,#cab880 50%, #c39d1e 100%);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.66);
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 76%;
+  border-top-color: #c39d1e;
+  border-bottom-color: #c39d1e;
+  border-left-color: #c39d1e;
+  border-right-color: #c39d1e;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
+.yellow:active {
+  background: radial-gradient(circle farthest-side at 41px -5px, #a7a293 0%,#bb9a2c 50%, #9a7c18 100%);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.66);
+    border-top-color: #a9881a;
+    border-bottom-color: #8a6f14;
+    border-left-color: #967815;
+    border-right-color: #967815;
 }
