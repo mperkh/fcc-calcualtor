@@ -14,7 +14,8 @@ class App extends Component {
       stack: [],
       display: '0',
       result: false,
-      decimal: false
+      decimal: false,
+      memory: '0'
     }
   };
 
@@ -27,6 +28,58 @@ class App extends Component {
 
   handleClick(key) {
     switch (key) {
+      case 'M+':
+        if (!/^[+\-*/]$/.test(this.state.display) && this.state.display !== ''){
+          this.setState({
+            memory: String(math.eval(this.state.memory + '+' + this.state.display))
+          });
+        }
+        break;
+      case 'M-':
+        if (!/^[+\-*/]$/.test(this.state.display) && this.state.display !== ''){
+          this.setState({
+            memory: String(math.eval(this.state.memory + '-' + this.state.display))
+          });
+        }
+        break;
+      case 'MR':
+        this.setState({
+          display: String(this.state.memory)
+        });
+        break;
+      case 'MC':
+        this.setState({
+          memory: '0'
+        });
+        break;
+      case 'negate':
+        if (!/^[+\-*/]$/.test(this.state.display) && this.state.display !== ''){
+          this.setState({
+            display: String(math.eval(this.state.display + '* -1'))
+          });
+        }
+        break;
+      case 'sqrt':
+        if (!/^[+\-*/]$/.test(this.state.display)){
+          this.setState({
+            display: String(math.sqrt(this.state.display))
+          });
+        }
+        break;
+      case 'percent':
+        if (!/^[+\-*/]$/.test(this.state.display)){
+          this.setState({
+            display: String(math.eval(this.state.display + '/ 100'))
+          });
+        }
+        break;
+      case 'inv':
+        if (!/^[+\-*/]$/.test(this.state.display && this.state.display !== '')){
+          this.setState({
+            display: String(math.eval('1/' + this.state.display))
+          });
+        }
+        break;
       case 'AC':
         this.setState({
           stack: [],
@@ -49,7 +102,7 @@ class App extends Component {
         }
         break;
       case '=':
-        if (!/[+\-*/]/.test(this.state.display) && this.state.display !== '') {
+        if (!/^[+\-*/]$/.test(this.state.display) && this.state.display !== '') {
           this.setState({
             display: String(math.eval(this.state.stack.join('') + this.state.display)),
             stack: [],
@@ -62,8 +115,8 @@ class App extends Component {
       case '-':
       case '*':
       case '/':
-        if (/[+\-*/]/.test(this.state.stack[this.state.stack.length-1]) &&
-            /[+\-*/]/.test(this.state.display)) {
+        if (/^[+\-*/]$/.test(this.state.stack[this.state.stack.length-1]) &&
+            /^[+\-*/]$/.test(this.state.display)) {
           let newstack = this.state.stack;
           newstack[newstack.length-1] = key;
           this.setState({
@@ -85,10 +138,10 @@ class App extends Component {
           break;
         } else if (key === '.' && !this.state.decimal) {
           this.setState({
-            decimal:true
+            decimal: true
           })
         }
-        if (/[+\-*/]/.test(this.state.display)) {
+        if (/^[+\-*/]$/.test(this.state.display)) {
           this.setState({
             display: '0' + String(key)
           })
@@ -111,18 +164,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>{
-          /^[\.+\-*/]$/.test(this.state.display)
-            ? this.state.display
-            : math.format(math.eval(this.state.display), {
-              notation: 'auto',
-              exponential: {
-                lower:1e-9,
-                upper:1e9
-              },
-              precision: 8
-            })
-        }</h1>
+      <div>{this.state.stack.join('')}</div><br/>
+      <div>{this.state.display}</div>
         <div id="braun">
           <img alt="BRAUN" id="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/16/Braun_Logo.svg" />
           <div id="window">
