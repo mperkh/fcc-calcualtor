@@ -96,21 +96,15 @@ background-color: #c4c8c7;
   width: 2.5em;
   height: 2.5em;
   border-radius: 76%;
-  border-top-color: #b3b3b1;
-  border-bottom-color: #84847f;
-  border-left-color: #9c9c98;
-  border-right-color: #9c9c98;
+  border-color: #b3b3b1 #9c9c98 #84847f;
   border-style: solid;
-  border-width: 0.5px;
+  border-width: thin;
 }
 
 .lightGray:active {
   background: radial-gradient(circle farthest-side at 17px 15px, #b1b3aa 0%,#b6b7ae 50%, #95968d 100%);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.66);
-  border-top-color: #6f6f6d;
-  border-bottom-color: #6f6f6d;
-  border-left-color: #6f6f6d;
-  border-right-color: #6f6f6d;
+  border-color: #6f6f6d #6f6f6d #6f6f6d;
 }
 
 .darkGray {
@@ -121,21 +115,15 @@ background-color: #c4c8c7;
   width: 2.5em;
   height: 2.5em;
   border-radius: 76%;
-  border-top-color: #736e67;
-  border-bottom-color: #564e43;
-  border-left-color: #5a5348;
-  border-right-color: #756f65;
+  border-color: #736e67 #5a5348 #564e43;
   border-style: solid;
-  border-width: 0.5px;
+  border-width: thin;
 }
 
 .darkGray:active {
   background: radial-gradient(circle farthest-side at 41px -5px, #cecdcb 0%,#5f5850 50%, #38322b 100%);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.66);
-  border-top-color: #736e67;
-  border-bottom-color: #564e43;
-  border-left-color: #5a5348;
-  border-right-color: #756f65;
+  border-color: #736e67 #5a5348 #564e43;
 }
 
 .yellow {
@@ -147,19 +135,13 @@ background-color: #c4c8c7;
   width: 2.5em;
   height: 2.5em;
   border-radius: 76%;
-  border-top-color: #c39d1e;
-  border-bottom-color: #c39d1e;
-  border-left-color: #c39d1e;
-  border-right-color: #c39d1e;
+  border-color: #c39d1e #c39d1e #c39d1e;
   border-style: solid;
-  border-width: 0.5px;
+  border-width: thin;
 }
 
 .yellow:active {
   background: radial-gradient(circle farthest-side at 41px -5px, #a7a293 0%,#bb9a2c 50%, #9a7c18 100%);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.66);
-    border-top-color: #a9881a;
-    border-bottom-color: #8a6f14;
-    border-left-color: #967815;
-    border-right-color: #967815;
+  border-color: #a9881a #967815 #8a6f14;
 }
