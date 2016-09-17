@@ -27,9 +27,11 @@ class App extends Component {
   handleClick(key) {
     switch (key) {
       case 'MR':
+      if (this.state.memory !== '0') {
         this.setState({
           display: String(this.state.memory)
         });
+      }
         break;
       case 'MC':
         this.setState({
@@ -183,6 +185,7 @@ class App extends Component {
           <img alt="BRAUN" id="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/16/Braun_Logo.svg" />
           <div id="window">
             <div id="digits">{output}</div>
+                        <div id="memory">{this.state.memory === '0' ? '' : 'M'}</div>
           </div>
           <button className="darkGray" onClick={this.handleClick.bind(this, 'M+')}>M+</button>
           <button className="darkGray" onClick={this.handleClick.bind(this, 'M-')}>M-</button>
