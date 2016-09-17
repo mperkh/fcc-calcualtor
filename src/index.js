@@ -26,20 +26,6 @@ class App extends Component {
 
   handleClick(key) {
     switch (key) {
-      case 'M+fds':
-        if (!/^[+\-*/]$/.test(this.state.display) && this.state.display !== ''){
-          this.setState({
-            memory: String(math.eval(this.state.memory + '+' + this.state.display))
-          });
-        }
-        break;
-      case 'M-sdf':
-        if (!/^[+\-*/]$/.test(this.state.display) && this.state.display !== ''){
-          this.setState({
-            memory: String(math.eval(this.state.memory + '-' + this.state.display))
-          });
-        }
-        break;
       case 'MR':
         this.setState({
           display: String(this.state.memory)
