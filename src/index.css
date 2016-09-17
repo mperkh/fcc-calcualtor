@@ -84,6 +84,7 @@ background-color: #c4c8c7;
     top: 14px;
     left: 28px;
     text-decoration: underline;
+    text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.17);
 }
 
 .lightGray {

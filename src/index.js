@@ -173,8 +173,8 @@ class App extends Component {
       output = math.format(math.eval(this.state.display), {
         notation: 'auto',
         exponential: {
-          lower:1e-9,
-          upper:1e9
+          lower: 1e-9,
+          upper: 1e9
         },
         precision: 8
       })
@@ -185,7 +185,7 @@ class App extends Component {
           <img alt="BRAUN" id="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/16/Braun_Logo.svg" />
           <div id="window">
             <div id="digits">{output}</div>
-                        <div id="memory">{this.state.memory === '0' ? '' : 'M'}</div>
+            <div id="memory">{this.state.memory === '0' ? '' : 'M'}</div>
           </div>
           <button className="darkGray" onClick={this.handleClick.bind(this, 'M+')}>M+</button>
           <button className="darkGray" onClick={this.handleClick.bind(this, 'M-')}>M-</button>
