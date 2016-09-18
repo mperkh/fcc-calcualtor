@@ -213,8 +213,6 @@ class App extends Component {
           <button className="yellow" onClick={this.handleClick.bind(this, '=')}>=</button>
           <button className="darkGray" onClick={this.handleClick.bind(this, '+')}>+</button><br/>
         </div>
-        <div>{this.state.stack.join('')}</div><br/>
-        <div>{this.state.display}</div>
       </div>
     );
   }
