@@ -54,9 +54,32 @@ class App extends Component {
         break;
       case 'percent':
         if (!/^[+\-*/]$/.test(this.state.display)){
-          this.setState({
-            display: String(math.eval(this.state.display + '/ 100'))
-          });
+          if (this.state.stack[this.state.stack.length - 1] === '+') {
+            this.setState({
+              display: String(math.eval((this.state.stack[this.state.stack.length - 2] * (1 + this.state.display / 100)))),
+              stack: [],
+              result: true,
+              decimal: false
+            });
+          } else if (this.state.stack[this.state.stack.length - 1] === '-') {
+            this.setState({
+              display: String(math.eval((this.state.stack[this.state.stack.length - 2] * (1 - this.state.display / 100)))),
+              stack: [],
+              result: true,
+              decimal: false
+            });
+          } else if (this.state.stack[this.state.stack.length - 1] === '*') {
+            this.setState({
+              display: String(math.eval((this.state.stack[this.state.stack.length - 2] * this.state.display / 100))),
+              stack: [],
+              result: true,
+              decimal: false
+            });
+          } else {
+            this.setState({
+              display: String(math.eval(this.state.display + '/ 100'))
+            });
+          }
         }
         break;
       case 'deltapercent':
