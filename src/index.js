@@ -103,7 +103,9 @@ class App extends Component {
       case 'CE':
         if (!/^[+\-*/]$/.test(this.state.display) && this.state.display) {
           this.setState({
-            display: ''
+            display: '',
+            result: false,
+            decimal: false
           })
         } else if (!this.state.display) {
           this.setState({
@@ -200,7 +202,10 @@ class App extends Component {
           upper: 1e9
         },
         precision: 8
-      })
+      });
+      if (/[0-9]\.$/.test(this.state.display)) {
+        output = output.concat('.');
+      }
     }
     return (
       <div>
